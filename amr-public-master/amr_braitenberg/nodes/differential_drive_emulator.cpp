@@ -25,6 +25,8 @@ void wheelSpeedCallback(const amr_msgs::WheelSpeeds::ConstPtr& msg)
   // Instructions: compute linear and angular components and
   //               fill in the twist message.
 
+  twist.linear.x = (msg->speeds[0] + msg->speeds[1]) / 2;
+  twist.angular.z = (msg->speeds[1] - msg->speeds[0]) / wheel_diameter;
 
   //========================================================
 
