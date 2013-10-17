@@ -42,10 +42,11 @@ void sonarCallback(const amr_msgs::Ranges::ConstPtr& msg)
   //               sonars compute the wheel speds and fill
   //               in the WheelSpeeds message.
   //
-  // Hint: use vehicle->computeWheelSpeeds(...) function.
-
-
+  // Hint: use vehicle->computeWheelSpeeds(...) function.  
+  m.speeds = { 0, 0};
+  vehicle->computeWheelSpeeds(msg->ranges[0].range, msg->ranges[1].range, m.speeds[0], m.speeds[1]);
   // =======================================================
+
 
   wheel_speeds_publisher.publish(m);
   ROS_DEBUG("[%.2f %.2f] --> [%.2f %.2f]", msg->ranges[0].range, msg->ranges[1].range, m.speeds[0], m.speeds[1]);
