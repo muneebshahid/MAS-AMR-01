@@ -34,7 +34,7 @@ void wheelSpeedCallback(const amr_msgs::WheelSpeeds::ConstPtr& msg)
   twist.linear.x = (left_wheel_speed + right_wheel_speed) / 2;
 
   //Setting angular velocity along z axis to calculated angular velocity.
-  twist.angular.z = (left_wheel_speed - right_wheel_speed) / distance_between_wheels;
+  twist.angular.z = (right_wheel_speed - left_wheel_speed) / distance_between_wheels;
   //========================================================
 
   velocity_publisher.publish(twist);
