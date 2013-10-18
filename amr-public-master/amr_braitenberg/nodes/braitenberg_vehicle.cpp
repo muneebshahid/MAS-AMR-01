@@ -24,6 +24,8 @@ void reconfigureCallback(amr_braitenberg::BraitenbergVehicleConfig &config, uint
   // Hint: to create an instance of smart pointer use the
   //       following construction:
   //       vehicle = BraitenbergVehicle::UPtr(new BraitenbergVehicle(...))
+
+  //Creating new vehicle type for each reconfiguration call back.
   vehicle = BraitenbergVehicle::UPtr(new BraitenbergVehicle((BraitenbergVehicle::Type) config.type, config.factor1, config.factor2));
   // =======================================================
 
@@ -41,8 +43,12 @@ void sonarCallback(const amr_msgs::Ranges::ConstPtr& msg)
   //               sonars compute the wheel speds and fill
   //               in the WheelSpeeds message.
   //
-  // Hint: use vehicle->computeWheelSpeeds(...) function.  
+  // Hint: use vehicle->computeWheelSpeeds(...) function. 
+
+  //Initializing the array that will used to populate the speeds.
   m.speeds = { 0, 0};
+
+  //Calculating speeds according to the vehicle type.
   vehicle->computeWheelSpeeds(msg->ranges[0].range, msg->ranges[1].range, m.speeds[0], m.speeds[1]);
   // =======================================================
 
