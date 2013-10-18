@@ -43,8 +43,7 @@ void BraitenbergVehicle::computeWheelSpeeds(float left_in, float right_in, float
 	{
 		/*
 		* According to the figure C. 
-		* They behave the same as B as long as factor2_ is zero. 
-		* but if factor1_ is zero and factor2_ is greater than zero the behave the same as type A.
+		* Type C behaves as Type A if factor2 > factor1 and behaves as Type B if factor1 > factor2.
 		* 
 		*/
 		left_out = (right_in * factor1_) + (left_in * factor2_);
