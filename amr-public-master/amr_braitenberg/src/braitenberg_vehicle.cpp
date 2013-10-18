@@ -21,9 +21,22 @@ void BraitenbergVehicle::computeWheelSpeeds(float left_in, float right_in, float
   //               right sonars compute the speeds of the
   //               wheels. Use the parameters stored in the
   //               private fields type_, factor1_, and
-  //               factor2_ (if applicable).	
-	left_out = left_in;
-	right_out = right_in;
+  //               factor2_ (if applicable).
+	if (type_ == TYPE_A)	
+	{
+		left_out = left_in;
+		right_out = right_in;
+	}
+	else if (type_ == TYPE_B)
+	{
+		left_out = right_in;
+		right_out = left_in;
+	}
+	else if (type_ == TYPE_C) 
+	{
+
+	}
+
   // =======================================================
 }
 
