@@ -42,11 +42,13 @@ void BraitenbergVehicle::computeWheelSpeeds(float left_in, float right_in, float
 	else if (type_ == TYPE_C) 
 	{
 		/*
-		* The figure for vechicle C is almost the same as B except, both wheel are affected by factor2_ as well.
+		* According to the figure C. 
+		* They behave the same as B as long as factor2_ is zero. 
+		* but if factor1_ is zero and factor2_ is greater than zero the behave the same as type A.
 		* 
 		*/
-		left_out = right_in * (factor1_ + factor2_);
-		right_out = left_in * (factor1_ + factor2_);
+		left_out = (right_in * factor1_) + (left_in * factor2_);
+		right_out = (left_in * factor1_) +  (right_in * factor2_);
 	}
 
   // =======================================================
