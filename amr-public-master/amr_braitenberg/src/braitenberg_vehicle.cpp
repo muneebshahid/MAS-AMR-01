@@ -24,17 +24,20 @@ void BraitenbergVehicle::computeWheelSpeeds(float left_in, float right_in, float
   //               factor2_ (if applicable).
 	if (type_ == TYPE_A)	
 	{
-		left_out = left_in;
-		right_out = right_in;
+		left_out = left_in * factor1_;
+		right_out = right_in * factor1_;
 	}
 	else if (type_ == TYPE_B)
 	{
-		left_out = right_in;
-		right_out = left_in;
+		left_out = right_in * factor1_;
+		right_out = left_in * factor1_;
 	}
 	else if (type_ == TYPE_C) 
 	{
-
+		left_out = left_in * factor1_;
+		right_out = right_in * factor1_;
+		left_out = left_out * right_in * factor2_;
+		right_out = right_out * left_in * factor2_;
 	}
 
   // =======================================================
