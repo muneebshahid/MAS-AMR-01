@@ -22,22 +22,31 @@ void BraitenbergVehicle::computeWheelSpeeds(float left_in, float right_in, float
   //               wheels. Use the parameters stored in the
   //               private fields type_, factor1_, and
   //               factor2_ (if applicable).
+
 	if (type_ == TYPE_A)	
 	{
+		/*
+		* Multiplying factor1 by both inputs.
+		*/
 		left_out = left_in * factor1_;
 		right_out = right_in * factor1_;
 	}
 	else if (type_ == TYPE_B)
 	{
+		/*
+		* Multiplying factor1 by both inputs.
+		*/
 		left_out = right_in * factor1_;
 		right_out = left_in * factor1_;
 	}
 	else if (type_ == TYPE_C) 
 	{
-		left_out = left_in * factor1_;
-		right_out = right_in * factor1_;
-		left_out = left_out * right_in * factor2_;
-		right_out = right_out * left_in * factor2_;
+		/*
+		* The figure for vechicle C is almost the same as B except, both wheel are affected by factor2_ as well.
+		* 
+		*/
+		left_out = right_in * (factor1_ + factor2_);
+		right_out = left_in * (factor1_ + factor2_);
 	}
 
   // =======================================================
