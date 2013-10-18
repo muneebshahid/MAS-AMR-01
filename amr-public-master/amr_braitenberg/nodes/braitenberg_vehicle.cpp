@@ -24,8 +24,7 @@ void reconfigureCallback(amr_braitenberg::BraitenbergVehicleConfig &config, uint
   // Hint: to create an instance of smart pointer use the
   //       following construction:
   //       vehicle = BraitenbergVehicle::UPtr(new BraitenbergVehicle(...))
-
-
+  vehicle = BraitenbergVehicle::UPtr(new BraitenbergVehicle((BraitenbergVehicle::Type) config.type, config.factor1, config.factor2));
   // =======================================================
 
   ROS_INFO("Vehicle reconfigured: type %i, factors %.2f and %.2f", config.type, config.factor1, config.factor2);
